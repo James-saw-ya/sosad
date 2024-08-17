@@ -14,7 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v4
-      
+        with:
+          node-version: 18
+
       - name: download current json
         env:
           PD: ${{ secrets.PLAYER_DATA }}
@@ -23,6 +25,7 @@ jobs:
           wget $SD --quiet
           wget $PD --quiet
           ls -la
+          npm
       
       - name: create artifact folder
         run: |
