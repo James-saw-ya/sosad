@@ -36,7 +36,7 @@ function filterData(sd,pd){
             player.holiday_duel &&
             (!(new Date(player.nextBattleAtLocation*1000) > new Date()) || player.last_duel) &&
             a.includes(player.alliance_id) &&
-            getPosition(player) != null;
+            getPosition(player) != null
        )
     
     relevantData.forEach(p => p["hp"] = pData.health.filter(entry => entry.name == p.name)[0].skill_level
