@@ -23,7 +23,7 @@ jobs:
           SD: ${{ secrets.SALOON_DATA }}
         run: |
           wget $SD --quiet -O sd.json
-          wget $PD --quiet -o pd.json
+          wget $PD --quiet -O pd.json
           ls -la
       
       - name: create artifact folder
