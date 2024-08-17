@@ -1,10 +1,18 @@
 const fs = require('node:fs');
 
 const a = [1165,1525,1225];
-    
-const fids = await(await fetch("https://james-saw-ya.github.io/ft2/fids.json")).json();
-const tids = await(await fetch("https://james-saw-ya.github.io/ft2/tids.json")).json();
-const jids = await(await fetch("https://james-saw-ya.github.io/ft2/jids.json")).json();
+
+function myFetch(url){
+    let myData;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => myData = data)
+    return myData;
+}
+
+const fids = myFetch("https://james-saw-ya.github.io/ft2/fids.json");
+const tids = myFetch("https://james-saw-ya.github.io/ft2/tids.json");
+const jids = myFetch("https://james-saw-ya.github.io/ft2/jids.json");
 
 function getPosition(pl){
     if(fids.filter(f => f.x == pl.x && f.y == pl.y).length > 0)
