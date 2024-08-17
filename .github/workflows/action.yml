@@ -2,9 +2,9 @@ name: download current json and push html to pages
 
 on:
   push:
-    branches: [ "main", "featureDev" ]
+    branches: [ "main" ]
   schedule:
-  - cron: "*/10 * * * *"
+  - cron: "*/6 * * * *"
   workflow_dispatch:
 
 jobs:
