@@ -19,8 +19,8 @@ jobs:
           PD: ${{ secrets.PLAYER_DATA }}
           SD: ${{ secrets.SALOON_DATA }}
         run: |
-          wget $SD
-          wget $PD
+          wget $SD --quiet
+          wget $PD --quiet
           ls -la
       
       - name: create artifact folder
