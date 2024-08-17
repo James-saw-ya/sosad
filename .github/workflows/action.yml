@@ -22,10 +22,9 @@ jobs:
           PD: ${{ secrets.PLAYER_DATA }}
           SD: ${{ secrets.SALOON_DATA }}
         run: |
-          wget $SD --quiet
-          wget $PD --quiet
+          wget $SD --quiet -O sd.json
+          wget $PD --quiet -o pd.json
           ls -la
-          npm
       
       - name: create artifact folder
         run: |
