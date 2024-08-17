@@ -2,9 +2,9 @@ name: download current json and push html to pages
 
 on:
   push:
-    branches: [ "main", "featureDev" ]
+    branches: [ "main" ]
   schedule:
-  - cron: "*/9 * * * *"
+  - cron: "*/6 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
           cp data.json output/
             
       - uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/featureDev' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
