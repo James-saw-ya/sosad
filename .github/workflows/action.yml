@@ -1,0 +1,39 @@
+name: download current json and push html to pages
+
+on:
+  push:
+    branches: [ "main" ]
+  schedule:
+  - cron: "*/6 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: download current json
+        env:
+          PD: ${{ secrets.PLAYER_DATA }}
+          SD: ${{ secrets.SALOON_DATA }}
+        run: |
+          wget $SD --quiet -O sd.json
+          wget $PD --quiet -O pd.json
+          ls -la
+          node pr0gram.js
+      
+      - name: create artifact folder
+        run: |
+          mkdir output
+          cp data.json output/
+            
+      - uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
