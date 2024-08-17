@@ -39,6 +39,7 @@ function filterData(sd,pd){
     relevantData.forEach(p => 
         p["tct"] = Math.round(pData.tactic.filter(entry => entry.name == p.name)[0].skill_level 
             * ((p.charclass == "soldier") ? 1.5 : 1)))
+    relevantData.forEach(p => p["p"] = getPosition(p));
     relevantData = relevantData.sort((a,b) =>  a.hp - b.hp)
     return relevantData;
 }
