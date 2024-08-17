@@ -9,7 +9,7 @@ function getPosition(pl){
     if(tids.filter(t => t.x == pl.x && t.y == pl.y).length > 0)
         return {"t": 't', 'id': fids.filter(t => t.x == pl.x && t.y == pl.y)[0]}
     if(jids.filter(j => j.x == pl.x && j.y == pl.y).length > 0)
-        return {"t": 'j', 'id': jids.filter(j => j.x == pl.x && j.y == pl.y)[0]}
+        return {"t": 'j', 'id': jids.filter(j => j.x == pl.x && j.y == pl.y)[0].id}
     return null;
 }
 
