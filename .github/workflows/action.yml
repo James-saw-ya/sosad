@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
       
       - name: download current json
         env:
@@ -26,7 +27,7 @@ jobs:
       - name: create artifact folder
         run: |
           mkdir output
-          cp *.html output/
+          #cp *.html output/
             
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
