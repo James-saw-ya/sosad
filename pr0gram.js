@@ -1,4 +1,4 @@
-/*const fs = require('node:fs');
+const fs = require('node:fs');
 
 try {
   const pd = fs.readFileSync('pd.json', 'utf8');
@@ -6,5 +6,3 @@ try {
 } catch (err) {
   console.error(err);
 }
-*/
-console.log("hello world");
