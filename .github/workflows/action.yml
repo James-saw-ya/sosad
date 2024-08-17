@@ -25,6 +25,7 @@ jobs:
           wget $SD --quiet -O sd.json
           wget $PD --quiet -O pd.json
           ls -la
+          npm run pr0gram.js
       
       - name: create artifact folder
         run: |
