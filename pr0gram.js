@@ -28,7 +28,7 @@ function filterData(sd,pd){
         p["tct"] = Math.round(pData.tactic.filter(entry => entry.name == p.name)[0].skill_level 
             * ((p.charclass == "soldier") ? 1.5 : 1)))
     relevantData = relevantData.sort((a,b) =>  a.hp - b.hp)
-    console.log(relevantData)
+    return relevantData;
 }
 
 try {
