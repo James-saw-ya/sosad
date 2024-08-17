@@ -1,0 +1,35 @@
+name: download current json and push html to pages
+
+on:
+  push:
+    branches: [ "main", "featureDev" ]
+  schedule:
+  - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: download current json
+        env:
+          PD: ${{ secrets.PLAYER_DATA }}
+          SD: ${{ secrets.SALOON_DATA }}
+        run: |
+          wget $SD
+          wget $PD
+          ls -la
+      
+      - name: create artifact folder
+        run: |
+          mkdir output
+          cp *.html output/
+            
+      - uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
