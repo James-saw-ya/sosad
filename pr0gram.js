@@ -35,7 +35,7 @@ try {
   const pd = fs.readFileSync('pd.json', 'utf8');
   const sd = fs.readFileSync('sd.json', 'utf8');
   
-  fs.writeFile('data.json', filterData(sd,pd), err => {
+  fs.writeFile('data.json', JSON.stringify(filterData(sd,pd)), err => {
   if (err) {
     console.error(err);
   } else {
