@@ -1,18 +1,7 @@
 const fs = require('node:fs');
 
 const a = [1165,1525,1225];
-
-function myFetch(url){
-    let myData;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => myData = data)
-    return myData;
-}
-
-const fids = myFetch("https://james-saw-ya.github.io/ft2/fids.json");
-const tids = myFetch("https://james-saw-ya.github.io/ft2/tids.json");
-const jids = myFetch("https://james-saw-ya.github.io/ft2/jids.json");
+let fids, tids, jids;
 
 function getPosition(pl){
     if(fids.filter(f => f.x == pl.x && f.y == pl.y).length > 0)
@@ -52,18 +41,22 @@ function filterData(sd,pd){
     relevantData = relevantData.sort((a,b) =>  a.hp - b.hp)
     return relevantData;
 }
-
-try {
-  const pd = fs.readFileSync('pd.json', 'utf8');
-  const sd = fs.readFileSync('sd.json', 'utf8');
-  
-  fs.writeFile('data.json', JSON.stringify(filterData(sd,pd)), err => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("written successfully")
-  }
-});
-} catch (err) {
-  console.error(err);
-}
+(async function(){   
+    fids = await (await fetch("https://james-saw-ya.github.io/ft2/fids.json")).json();
+    tids = await (await fetch("https://james-saw-ya.github.io/ft2/tids.json")).json();
+    jids = await (await fetch("https://james-saw-ya.github.io/ft2/jids.json")).json();
+    try {
+      const pd = fs.readFileSync('pd.json', 'utf8');
+      const sd = fs.readFileSync('sd.json', 'utf8');
+      
+      fs.writeFile('data.json', JSON.stringify(filterData(sd,pd)), err => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("written successfully")
+      }
+    });
+    } catch (err) {
+      console.error(err);
+    }
+})()
