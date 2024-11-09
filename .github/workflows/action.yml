@@ -30,6 +30,7 @@ jobs:
       - name: create artifact folder
         run: |
           mkdir output
+          cp index.html output/
           cp data.json output/
             
       - uses: peaceiris/actions-gh-pages@v3
