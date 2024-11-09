@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <script>
+      (async function(){
+        await new Promise(s => setTimeout(s, 200));
+        while(true){
+          let str = "<table>";
+          let data = await (await fetch("https://james-saw-ya.github.io/sosad/data.json?dt=" + Math.floor(Math.random()*10e9))).json();
+          data = data.sort((a,b) => a.hp - b.hp);
+          data.forEach(player => str += "<tr><td>" player.name + "</td><td>" + player.hp + "</td></tr>");
+          document.getElementById("tgt").innerHtml = str + "</table>";
+          await new Promise(s => setTimeout(s, 1000*60*10));
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="tgt"></div>
+  </body>
+</html>
