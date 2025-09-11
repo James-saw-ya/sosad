@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 
 const a = [1165,1525,1225];
+const ps = [257154];
 let fids, tids, jids;
 
 function getPosition(pl){
@@ -24,7 +25,7 @@ function filterData(sd,pd){
             !player.isSleepingTent) || player.last_duel) &&
             player.holiday_duel &&
             (!(new Date(player.nextBattleAtLocation*1000) > new Date()) || player.last_duel) &&
-            a.includes(player.alliance_id) &&
+            (a.includes(player.alliance_id) || ps.includes(player.player_id)) &&
             getPosition(player) != null
        )
     
