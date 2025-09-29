@@ -38,11 +38,11 @@ function filterData(sd,pd){
         p["tct"] = Math.round(pData.tactic.filter(entry => entry.name == p.name)[0].skill_level 
             * ((p.charclass == "soldier") ? 1.5 : 1)))
     relevantData.forEach(p => 
-        p["bld"] = Math.round(pData.build.filter(entry => entry.name == p.name)[0].skill_level)
+        p["bld"] = Math.round(pData.build.filter(entry => entry.name == p.name)[0].skill_level))
     relevantData.forEach(p => 
-        p["sht"] = Math.round(pData.shot.filter(entry => entry.name == p.name)[0].skill_level)  
+        p["sht"] = Math.round(pData.shot.filter(entry => entry.name == p.name)[0].skill_level))  
     relevantData.forEach(p => 
-        p["pnc"] = Math.round(pData.punch.filter(entry => entry.name == p.name)[0].skill_level)  
+        p["pnc"] = Math.round(pData.punch.filter(entry => entry.name == p.name)[0].skill_level))  
     relevantData.forEach(p => p["p"] = getPosition(p));
     relevantData = relevantData.sort((a,b) =>  a.hp - b.hp)
     return relevantData;
