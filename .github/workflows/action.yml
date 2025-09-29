@@ -26,12 +26,14 @@ jobs:
           wget $PD --quiet -O pd.json
           ls -la
           node pr0gram.js
+          node t00l.js
       
       - name: create artifact folder
         run: |
           mkdir output
           cp index.html output/
           cp data.json output/
+          cp bdata.json output/
             
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
