@@ -16,6 +16,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+          
+      - name: create artifacts
+        run: |
+          mkdir output
+          echo "[]" >> output/data.json
+          echo "[]" >> output/bdata.json
+          
+      - uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
 
       - name: download current json
         env:
@@ -28,7 +40,7 @@ jobs:
           node pr0gram.js
           node t00l.js
       
-      - name: create artifact folder
+      - name: push artifacts into folder
         run: |
           mkdir output
           cp index.html output/
