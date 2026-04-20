@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 
 const a = [1165,1525,1225];
-const ps = [257154, 95856, 826598, 1108343, 482117, 1086182, 930447];
+const ps = [257154, 95856, 826598, 1108343, 482117, 1086182, 930447, "177632", "1001402"];
 let fids, tids, jids;
 
 function getPosition(pl){
